@@ -55,9 +55,42 @@ const tweets = [
   { id: "004", likes: 3, tags: ["html", "c++"] },
 ];
 
-const allTags = tweets.reduce((allTags, tweet) => {
-  allTags.push(tweet.tags);
-
-  return allTags;
-}, []);
+const allTags = tweets.reduce(
+  (acc, tweet) => [...acc, ...tweet.tags],
+  // tags.push(...tweet.tags);
+  []
+);
 console.log(allTags);
+
+// первая итерация
+// acc = [], tweet.tags = ["js", "nodejs"], return [...[], ...["js", "nodejs"]]
+// acc = ["js", "nodejs"], tweet.tags = ["html", "css"], return  [...["js", "nodejs"], ... ["html", "css"]]
+// acc = ["js", "nodejs", "html", "css"], tweet.tags = ["html", "js", "nodejs"], return [...["js", "nodejs", "html", "css"], ...["html", "js", "nodejs"]]
+// acc = ["js", "nodejs", "html", "css", "html", "js", "nodejs"]
+
+// ведём статистику тегов
+const tagsStats = allTags.reduce(
+  (acc, tag) =>
+    // if (acc[tag]) {
+    //   //     acc[tag] += 1;
+
+    //   return {
+    //     ...acc,
+    //     [tag]: acc.tag + 1,
+    //   };
+    // }
+
+    // acc[tag] = 1;
+    // return {
+    //   ...acc,
+    //   [tag]: 1,
+    // };
+
+    ({
+      ...acc,
+      [tag]: acc[tag] ? (acc[tag] += 1) : 1,
+    }),
+  {}
+);
+
+console.log(tagsStats);
