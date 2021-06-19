@@ -318,3 +318,64 @@ const getActiveUsers = (users) => {
 const getInactiveUsers = (users) => {
   return users.filter((user) => !user.isActive === true);
 };
+
+// задача 24
+
+// Используя метод find() дополни код так, чтобы:
+// В переменной bookWithTitle получился объект книги название которой
+// (свойство title) совпадает со значением переменной BOOK_TITLE.
+// В переменной bookByAuthor получился объект книги автор который
+// (свойство author) совпадает со значением переменной AUTHOR.
+
+const books = [
+  { title: "Последнее королевство", author: "Бернард Корнуэлл", rating: 8.38 },
+  { title: "На берегу спокойных вод", author: "Роберт Шекли", rating: 8.51 },
+  { title: "Сон смешного человека", author: "Федор Достоевский", rating: 7.75 },
+  { title: "Красна как кровь", author: "Ли Танит", rating: 7.94 },
+];
+const BOOK_TITLE = "Сон смешного человека";
+const AUTHOR = "Роберт Шекли";
+
+const bookWithTitle = books.find((book) => book.title === BOOK_TITLE);
+const bookByAuthor = books.find((book) => book.author === AUTHOR);
+
+// задача 25
+
+// Дополни функцию getUserWithEmail(users, email) так, чтобы она возвращала объект пользователя,
+// почта которого (свойство email) совпадает со значением параметра email.
+
+const getUserWithEmail = (users, email) => {
+  return users.find((user) => user.email === email);
+};
+
+// задача 26
+
+// Используя метод every() дополни код так, чтобы:
+// В переменной eachElementInFirstIsEven был результат проверки всех элементов массива firstArray на чётность.
+// В переменной eachElementInFirstIsOdd был результат проверки всех элементов массива firstArray на нечётность.
+// В переменной eachElementInSecondIsEven был результат проверки всех элементов массива secondArray на чётность.
+// В переменной eachElementInSecondIsOdd был результат проверки всех элементов массива secondArray на нечётность.
+// В переменной eachElementInThirdIsEven был результат проверки всех элементов массива thirdArray на чётность.
+// В переменной eachElementInThirdIsOdd был результат проверки всех элементов массива thirdArray на нечётность.
+
+const firstArray = [26, 94, 36, 18];
+const secondArray = [17, 61, 23];
+const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+
+const eachElementInFirstIsEven = firstArray.every((value) => value % 2 === 0);
+const eachElementInFirstIsOdd = firstArray.every((value) => value % 2 !== 0);
+
+const eachElementInSecondIsEven = secondArray.every((value) => value % 2 === 0);
+const eachElementInSecondIsOdd = secondArray.every((value) => value % 2 !== 0);
+
+const eachElementInThirdIsEven = thirdArray.every((value) => value % 2 === 0);
+const eachElementInThirdIsOdd = thirdArray.every((value) => value % 2 !== 0);
+
+// задача 27
+
+// Дополни функцию isEveryUserActive(users) так, чтобы она проверяла все ли пользователи
+// сейчас активны (свойство isActive) и возвращала true или false.
+
+const isEveryUserActive = (users) => {
+  return users.every((user) => user.isActive);
+};
