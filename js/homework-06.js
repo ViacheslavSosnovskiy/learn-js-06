@@ -505,3 +505,102 @@ const authors = [
 const authorsInAlphabetOrder = [...authors].sort((a, b) => a.localeCompare(b));
 
 const authorsInReversedOrder = [...authors].sort((a, b) => b.localeCompare(a));
+
+// задача 37
+
+// Дополни код так, чтобы:
+// В переменной sortedByAuthorName получился массив книг отсортированный
+// по имени автора в алфавитном порядке.
+// В переменной sortedByReversedAuthorName получился массив книг отсортированный
+// по имени автора в обратном алфавитном порядке.
+// В переменной sortedByAscendingRating получился массив книг отсортированный по возрастанию рейтинга.
+// В переменной sortedByDescentingRating получился массив книг отсортированный по убыванию рейтинга.
+
+const books = [
+  { title: "Последнее королевство", author: "Бернард Корнуэлл", rating: 8.38 },
+  { title: "На берегу спокойных вод", author: "Роберт Шекли", rating: 8.51 },
+  { title: "Сон смешного человека", author: "Федор Достоевский", rating: 7.75 },
+  { title: "Красна как кровь", author: "Ли Танит", rating: 7.94 },
+  { title: "Враг Божий", author: "Бернард Корнуэлл", rating: 8.67 },
+];
+
+const sortedByAuthorName = [...books].sort((a, b) =>
+  a.author.localeCompare(b.author)
+);
+
+const sortedByReversedAuthorName = [...books].sort((a, b) =>
+  b.author.localeCompare(a.author)
+);
+
+const sortedByAscendingRating = [...books].sort((a, b) => a.rating - b.rating);
+
+const sortedByDescentingRating = [...books].sort((a, b) => b.rating - a.rating);
+
+// задача 38
+
+// Дополни функцию sortByAscendingBalance(users) так, чтобы она возвращала массив пользователей
+// отсортированный по возрастанию их баланса (свойство balance).
+
+const sortByAscendingBalance = (users) => {
+  return [...users].sort((a, b) => a.balance - b.balance);
+};
+
+// задача 39
+
+// Дополни функцию sortByDescendingFriendCount(users) так, чтобы она возвращала массив пользователей
+// отсортированный по убыванию количества их друзей (свойство friends).
+
+const sortByDescendingFriendCount = (users) => {
+  return [...users].sort((a, b) => b.friends.length - a.friends.length);
+};
+
+// задача 40
+
+// Дополни функцию sortByName(users) так, чтобы она возвращала массив пользователей
+// отсортированный по их имени (свойство name) в алфавитном порядке.
+
+const sortByName = (users) => {
+  return [...users].sort((a, b) => a.name.localeCompare(b.name));
+};
+
+// задача 41 =========
+
+// Дополни код так, чтобы в переменной names получился массив имён авторов в алфавитном порядке,
+// рейтинг книг которых больше значения переменной MIN_BOOK_RATING.
+
+const books = [
+  { title: "Последнее королевство", author: "Бернард Корнуэлл", rating: 8.38 },
+  { title: "На берегу спокойных вод", author: "Роберт Шекли", rating: 8.51 },
+  { title: "Сон смешного человека", author: "Федор Достоевский", rating: 7.75 },
+  { title: "Красна как кровь", author: "Ли Танит", rating: 8.14 },
+  { title: "Сны В Ведьмином Доме", author: "Говард Лавкрафт", rating: 8.67 },
+];
+const MIN_BOOK_RATING = 8;
+
+const names = books
+  .filter((book) => book.rating > MIN_BOOK_RATING)
+  .map((book) => book.author)
+  .sort((a, b) => a.localeCompare(b));
+
+// задача 42 ========
+const getNamesSortedByFriendCount = (users) => {
+  return [...users]
+    .sort((a, b) => a.friends.length - b.friends.length)
+    .map((user) => user.name);
+};
+
+// задача 43 ======
+
+const getSortedFriends = (users) => {
+  return users
+    .flatMap((user) => user.friends)
+    .filter((friend, index, array) => array.indexOf(friend) === index)
+    .sort((a, b) => a.localeCompare(b));
+};
+
+// задача 44
+
+return users
+  .filter((user, index, array) => user.gender === gender)
+  .map((user) => user.balance)
+  .reduce((total, value) => total + value, 0);
